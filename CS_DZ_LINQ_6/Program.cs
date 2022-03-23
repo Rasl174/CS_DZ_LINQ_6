@@ -18,12 +18,12 @@ namespace CS_DZ_LINQ_6
 
             int userInput = Convert.ToInt32(Console.ReadLine());
 
-            var soldierName = soldiers.Where(soldier => soldier.ServiceLife == userInput);
+            var sortierName = soldiers.Where(soldier => soldier.ServiceLife == userInput).ToList();
 
-            foreach (var soldier in soldierName)
-            {
-                Console.WriteLine("Солдато зовут - " + soldier.Name + "\nЕго звание - " + soldier.Rank);
-            }
+            var name = sortierName.ElementAt(0).Name;
+            var rank = sortierName.ElementAt(0).Rank;
+
+            Console.WriteLine("Солдато зовут - " + name + "\nЕго звание - " + rank);
         }
     }
 
