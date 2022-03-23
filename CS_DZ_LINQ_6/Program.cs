@@ -17,13 +17,19 @@ namespace CS_DZ_LINQ_6
             Console.WriteLine("Для вывода имени солдатa и звания введите месяцы службы");
 
             int userInput = Convert.ToInt32(Console.ReadLine());
+            var sortierSoldier = soldiers.Where(soldier => soldier.ServiceLife == userInput);
 
-            var sortierName = soldiers.Where(soldier => soldier.ServiceLife == userInput).ToList();
+            var sortired = from Soldier soldier in sortierSoldier
+                           select new
+                           {
+                               Name = soldier.Name,
+                               Rank = soldier.Rank
+                           };
 
-            var name = sortierName.ElementAt(0).Name;
-            var rank = sortierName.ElementAt(0).Rank;
-
-            Console.WriteLine("Солдато зовут - " + name + "\nЕго звание - " + rank);
+            foreach (var soldier in sortired)
+            {
+                Console.WriteLine("Его имя - " + soldier.Name + "\nЕго звание - " + soldier.Rank);
+            }
         }
     }
 
